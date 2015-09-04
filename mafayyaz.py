@@ -1,4 +1,6 @@
 #!/usr/bin/env python
+# vim: tabstop=4 softtabstop=4 shiftwidth=4 smarttab expandtab:
+
 from BaseHTTPServer import BaseHTTPRequestHandler,HTTPServer
 from SocketServer import ThreadingMixIn
 import threading
