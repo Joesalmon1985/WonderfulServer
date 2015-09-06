@@ -26,6 +26,7 @@ class HTTPRequestHandler(BaseHTTPRequestHandler):
                 recordID = self.path.split('/')[-1]
                 LocalData.records[recordID] = data
                 print "record %s is added successfully" % recordID
+                # FIXME send back 201 : Created
             else:
                 data = {}
                 self.send_response(200)
@@ -39,6 +40,7 @@ class HTTPRequestHandler(BaseHTTPRequestHandler):
     def do_GET(self):
         if None != re.search('/api/v1/getrecord/*', self.path):
             recordID = self.path.split('/')[-1]
+            # FIXME Could use exception handling to catch key errors
             if LocalData.records.has_key(recordID):
                 self.send_response(200)
                 self.send_header('Content-Type', 'application/json')
@@ -71,6 +73,7 @@ class SimpleHttpServer():
         self.server_thread.start()
 
     def waitForThread(self):
+        # FIXME Catch "error: [Errno 54] Connection reset by peer"
         self.server_thread.join()
 
     def addRecord(self, recordID, jsonEncodedRecord):
@@ -87,6 +90,7 @@ if __name__=='__main__':
     args = parser.parse_args()
 
     server = SimpleHttpServer(args.ip, args.port)
+    # FIXME Report host, ip and pid
     print 'HTTP Server Running...........'
     server.start()
     server.waitForThread()
