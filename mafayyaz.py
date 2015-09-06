@@ -12,7 +12,8 @@ import re
 import cgi
  
 class LocalData(object):
-    records = {}
+    # This must be a dict not a set
+    records = { "origin": "mafayyaz.wordpress.com" }
  
 class HTTPRequestHandler(BaseHTTPRequestHandler):
  
