@@ -1,6 +1,9 @@
 #!/usr/bin/env python
 # vim: tabstop=4 softtabstop=4 shiftwidth=4 smarttab expandtab:
 
+# From Writing Simple HTTP Server in Python
+# https://mafayyaz.wordpress.com/2013/02/08/writing-simple-http-server-in-python-with-rest-and-json/
+
 from BaseHTTPServer import BaseHTTPRequestHandler,HTTPServer
 from SocketServer import ThreadingMixIn
 import threading
